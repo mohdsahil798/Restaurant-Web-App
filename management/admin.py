@@ -9,3 +9,24 @@ class ReservationAdmin(admin.ModelAdmin):
     list_editable = ('is_accepted', 'is_complete')
     ordering = ('-created_at',)
     date_hierarchy = 'date_time'
+
+@admin.register(MealCategory)
+class MealCategoryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'prefix', 'is_available')
+    list_filter = ('is_available',)
+    search_fields = ('name', 'prefix')
+    list_editable = ('is_available',)
+    
+@admin.register(Dish)
+class DishAdmin(admin.ModelAdmin):
+    list_display = ('name', 'meal_category', 'price', 'is_available')
+    list_filter = ('is_available', "meal_category")
+    search_fields = ('name', 'description')
+    list_editable = ('is_available',)
+
+@admin.register(ContactUs)
+class ContactUsAdmin(admin.ModelAdmin):
+    list_display = ('name', 'subject', 'message')
+    search_fields = ('name', 'subject', 'message')
+    ordering = ('-created_at',)
+    date_hierarchy = 'created_at'
