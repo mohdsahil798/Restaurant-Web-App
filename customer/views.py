@@ -32,6 +32,7 @@ def home(request):
                 'status': 'success',
                 'message': 'Reservation submitted successfully! We will contact you soon.'
             })
+            # return redirect('contact')
             return render(request, 'index.html', context)
 
         except Exception as e:
