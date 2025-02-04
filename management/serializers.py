@@ -14,4 +14,19 @@ class MealCategorySerializer(serializers.ModelSerializer):
 class DishSerializer(serializers.ModelSerializer):
     class Meta:
         model = Dish
-        fields = "__all__"
+        fields = [
+            "meal_category", "name", "price", "photos", 
+            "description", "is_available", "created_at", "updated_at"
+        ]
+        
+class MealCategoryWithDishesSerializer(serializers.ModelSerializer):
+    dishes = serializers.SerializerMethodField()
+    
+    class Meta:
+        model = MealCategory
+        fields = ["prefix", "ico_type", "name", "created_at", "updated_at",  "is_available", "dishes"]
+        
+        
+    def get_dishes(self, obj):
+        dishes = Dish.objects.filter(meal_category = obj)
+        return DishSerializer(dishes, many = True).data
