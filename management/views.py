@@ -184,3 +184,4 @@ class MealCategoryWithDishesList(APIView):
         print(categories.values())
         serializer = MealCategoryWithDishesSerializer(categories, many = True)
         return Response(serializer.data)
+
