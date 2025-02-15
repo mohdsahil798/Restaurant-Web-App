@@ -23,12 +23,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-39$ea=3)%*rqlzu(-kn3ipi5_mel7*!n4z%jhv5&(9f%+1v99c"
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'your-default-secret-key')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
+
 
 AUTH_USER_MODEL = 'authentication.CustomUser'
 
@@ -89,15 +92,16 @@ WSGI_APPLICATION = "restro.wsgi.application"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get('POSTGRES_DB_NAME'),
-        "USER": os.environ.get('POSTGRES_USER_NAME'),
-        "PASSWORD": os.environ.get('POSTGRES_USER_PASSWORD'),
-        "HOST": os.environ.get('POSTGRES_HOST'),
-        "PORT": os.environ.get('POSTGRES_PORt'),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'mohd',  # Make sure this matches the PostgreSQL user
+        'PASSWORD': 'sahil@123',  # Make sure this is the correct password
+        'HOST': 'localhost',
+        'PORT': '5432',  # Default PostgreSQL port
     }
 }
+
 
 
 # Password validation
@@ -156,7 +160,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 from datetime import timedelta
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(day=1),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
