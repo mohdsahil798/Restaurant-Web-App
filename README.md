@@ -23,8 +23,8 @@ This is a **Restaurant Management Web Application** built using **Django and Dja
 ## 🔧 Installation & Setup
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/nisarggurjar/bt125.git
-   cd bt125
+   git clone https://github.com/mohdsahil798/Restaurant-Web-App.git
+   
 python -m venv env
 source env/bin/activate  # On Windows: env\Scripts\activate
 
