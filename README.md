@@ -20,4 +20,19 @@ This is a **Restaurant Management Web Application** built using **Django and Dja
 - **Database:** SQLite / PostgreSQL
 - **Authentication:** Django Auth System / JWT Tokens
 
->>>>>>> 7e91b4699512cc2ce2b28947dc27733c8a0b41af
+## 🔧 Installation & Setup
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/nisarggurjar/bt125.git
+   cd bt125
+python -m venv env
+source env/bin/activate  # On Windows: env\Scripts\activate
+
+pip install -r requirements.txt
+
+python manage.py migrate
+
+python manage.py runserver
+
+http://127.0.0.1:8000/
+
